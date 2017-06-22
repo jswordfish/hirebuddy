@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="template">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="name" type="xs:string"/>
+        <xs:element ref="addresses"/>
+        <xs:element ref="entities"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="addresses">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="address" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="address">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="line" type="xs:string" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="entities">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="entity" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="entity">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="textAsPresent" type="xs:string"/>
+        <xs:element name="outputText" type="xs:string"/>
+        <xs:element name="xCoordinate" type="xs:string"/>
+        <xs:element name="yCoordinate" type="xs:string"/>
+        <xs:element name="dataType" type="xs:string"/>
+        <xs:element name="beforeText" type="xs:string"/>
+        <xs:element name="afterText" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

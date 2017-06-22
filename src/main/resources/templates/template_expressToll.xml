@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <template xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="template_schema_v1.xsd">
+     <name>EXpressToll</name>
+      <addresses>
+        <address>
+          <line>22470 E. 6th Parkway, Suite 110</line>
+          <line>Aurora, CO 80018</line>
+        </address>
+     </addresses>
+     <entities>
+         
+      <entity>
+          <textAsPresent>Remaining Balance</textAsPresent>
+          <outputText>DUE_AMT </outputText>
+          <xCoordinate>na</xCoordinate>
+          <yCoordinate>179.91802978515625</yCoordinate>
+          <dataType>floatWithCurrency</dataType>
+          <beforeText>Remaining Balance :</beforeText>
+          <afterText></afterText>
+         </entity> 
+      <entity>
+          <textAsPresent>Payments Made</textAsPresent>
+          <outputText>PAYMENTS_MADE</outputText>
+          <xCoordinate>na</xCoordinate>
+          <yCoordinate>129.78802490234375</yCoordinate>
+          <dataType>long</dataType>
+          <beforeText>Payments Made :</beforeText>
+          <afterText></afterText>
+      </entity>
+    </entities>
+</template>

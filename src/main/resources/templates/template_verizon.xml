@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+  <template xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="template_schema_v1.xsd">
+     <name>Verizon Wireless</name>
+      <addresses>
+        <address>
+          <line>PO BOX 4005</line>
+          <line>ACWORTH, GA 30101-9006</line>
+        </address>
+        <address>
+          <line>PO BOX 4005 ACWORTH, GA 30101-9006</line>
+        </address>
+    </addresses>
+     <entities>
+      <entity>
+          <textAsPresent>Account Number</textAsPresent>
+          <outputText>ACCOUNT_NUMBER</outputText>
+          <xCoordinate>na</xCoordinate>
+          <yCoordinate>565.9199829101562</yCoordinate>
+          <dataType>longWithHash</dataType>
+          <beforeText>Account Number</beforeText>
+          <afterText></afterText>
+      </entity>   
+      <entity>
+          <textAsPresent>Total Current Charges</textAsPresent>
+          <outputText>DUE_AMT</outputText>
+          <xCoordinate>na</xCoordinate>
+          <yCoordinate>257.280029296875</yCoordinate>
+          <dataType>floatWithCurrency</dataType>
+          <beforeText>Total Current Charges</beforeText>
+          <afterText></afterText>
+         </entity> 
+      <entity>
+          <textAsPresent>Invoice Number</textAsPresent>
+          <outputText>INVOICE_NUMBER</outputText>
+          <xCoordinate>na</xCoordinate>
+          <yCoordinate>577.4400024414062</yCoordinate>
+          <dataType>long</dataType>
+          <beforeText>Invoice Number</beforeText>
+          <afterText></afterText>
+      </entity>
+      <entity>
+          <textAsPresent>Bill Date</textAsPresent>
+          <outputText>BILL_DATE</outputText>
+          <xCoordinate>na</xCoordinate>
+          <yCoordinate>554.3999633789062</yCoordinate>
+           <dataType>date</dataType>
+           <beforeText>Bill Date</beforeText>
+          <afterText></afterText>
+      </entity>
+      <!-- <entity>
+          <textAsPresent>Due Date</textAsPresent>
+          <outputText>DUE_DATE</outputText>
+          <xCoordinate>na</xCoordinate>
+          <yCoordinate>603.5999755859375</yCoordinate>
+           <dataType>date</dataType>
+           <beforeText>Total Amount Due by</beforeText>
+          <afterText></afterText>
+      </entity> -->
+     </entities>
+</template>

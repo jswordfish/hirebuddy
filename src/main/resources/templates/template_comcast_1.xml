@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <template xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="template_schema_v1.xsd">
+          <name>Comcast</name>
+   <addresses>
+   	  <address>
+        <line>PO BOX 34744</line>
+        <line>SEATTLE WA   98124-1744</line>      
+      </address>
+      <address>
+        <line>P.O. BOX 34744</line>
+        <line>SEATTLE WA   98124-1744</line>	
+      </address>
+   </addresses>
+     <entities>
+      <entity>
+          <textAsPresent>Account Number</textAsPresent>
+          <outputText>ACCOUNT_NUMBER</outputText>
+          <xCoordinate>na</xCoordinate>
+          <yCoordinate>40.29998779296875</yCoordinate>
+          <dataType>longWithSpace</dataType>
+          <beforeText>Account Number</beforeText>
+          <afterText></afterText>
+      </entity>   
+      <entity>
+          <textAsPresent>Total Amount Due</textAsPresent>
+          <outputText>DUE_AMT</outputText>
+          <xCoordinate>na</xCoordinate>
+          <yCoordinate>62.4000244140625</yCoordinate>
+          <dataType>floatWithCurrency</dataType>
+          <beforeText>Total Amount Due</beforeText>
+          <afterText></afterText>
+         </entity> 
+      <entity>
+          <textAsPresent>Billing Date</textAsPresent>
+          <outputText>BILLING_DATE</outputText>
+          <xCoordinate>na</xCoordinate>
+          <yCoordinate>51.3499755859375</yCoordinate>
+          <dataType>date</dataType>
+          <beforeText>Billing Date</beforeText>
+          <afterText></afterText>
+      </entity>
+      <entity>
+          <textAsPresent>Payment Due By</textAsPresent>
+          <outputText>PAYMENT_DUE_BY</outputText>
+          <xCoordinate>na</xCoordinate>
+          <yCoordinate>73.4000244140625</yCoordinate>
+           <dataType>date</dataType>
+           <beforeText>Payment Due By</beforeText>
+          <afterText></afterText>
+      </entity>
+     </entities>
+</template>
