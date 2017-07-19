@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
@@ -64,6 +65,8 @@ public class Buddy extends Base{
 	
 	String passportUrl;
 	
+	String cvURL;
+	
 	@Transient
 	byte[] pan;
 	
@@ -82,7 +85,16 @@ public class Buddy extends Base{
 	@Transient
 	String passportExtension;
 	
+	@Transient
+	byte[] cv;
+
+	@Transient
+	String cvExtension;
+	
 	Boolean validated = false;
+	
+	@Embedded
+	BuddyScheduleAndCostPreference buddyScheduleAndCostPreference = new BuddyScheduleAndCostPreference();
 
 	public String getFirstName() {
 		return firstName;
@@ -304,6 +316,39 @@ public class Buddy extends Base{
 
 	public void setValidated(Boolean validated) {
 		this.validated = validated;
+	}
+
+	public String getCvURL() {
+		return cvURL;
+	}
+
+	public void setCvURL(String cvURL) {
+		this.cvURL = cvURL;
+	}
+
+	public byte[] getCv() {
+		return cv;
+	}
+
+	public void setCv(byte[] cv) {
+		this.cv = cv;
+	}
+
+	public String getCvExtension() {
+		return cvExtension;
+	}
+
+	public void setCvExtension(String cvExtension) {
+		this.cvExtension = cvExtension;
+	}
+
+	public BuddyScheduleAndCostPreference getBuddyScheduleAndCostPreference() {
+		return buddyScheduleAndCostPreference;
+	}
+
+	public void setBuddyScheduleAndCostPreference(
+			BuddyScheduleAndCostPreference buddyScheduleAndCostPreference) {
+		this.buddyScheduleAndCostPreference = buddyScheduleAndCostPreference;
 	}
 	
 	

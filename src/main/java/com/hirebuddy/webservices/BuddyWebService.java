@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.hirebuddy.common.UserData;
 import com.hirebuddy.domain.Buddy;
 import com.hirebuddy.services.BuddyService;
 
@@ -58,6 +59,37 @@ public class BuddyWebService {
 		} catch (Exception e) {
 			logger.error("Problem saving buddy", e);
 			return Response.status(Status.BAD_REQUEST).entity("BUDDY_UPDATE_FAILURE").build();
+		}
+	}
+	
+	
+	@POST
+	@Path("/buddy/verify/otp/token/{token}")
+	@Produces("application/json")
+	@Consumes("application/json")
+	public Response verifyOtp(UserData otpData , @PathParam("token") String token){
+		try {
+			buddyService.verifyOTP(otpData.getIdentity(), otpData.getIdentityType(), otpData.getToken());
+			return Response.ok("OTP_VERIFIED").build();
+			
+		} catch (Exception e) {
+			logger.error("OTP_VERIFICATION_FAILED", e);
+			return Response.status(Status.BAD_REQUEST).entity("OTP_VERIFICATION_FAILED").build();
+		}
+	}
+	
+	@POST
+	@Path("/buddy/authenticate/token/{token}")
+	@Produces("application/json")
+	@Consumes("application/json")
+	public Response authenticate(UserData userData , @PathParam("token") String token){
+		try {
+			boolean res = buddyService.authenticate(userData.getIdentity(), userData.getIdentityType(), userData.getToken());
+			return Response.ok().entity(res).build();
+			
+		} catch (Exception e) {
+			logger.error("FAILURE", e);
+			return Response.status(Status.BAD_REQUEST).entity("AUTHENTICATION_FAILURE").build();
 		}
 	}
 

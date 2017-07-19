@@ -52,6 +52,10 @@ public class BuddyServiceImpl extends HireBuddyServiceImpl<Long, Buddy> implemen
     
     public void saveOrUpdate(Buddy buddy) throws HireBuddyException{
     	
+    	if(buddy.getPassword() == null || buddy.getPassword().trim().length() < 4 ){
+    		throw new HireBuddyException("Invalid_Password");
+    	}
+    	
     	if(buddy.getIdentityType() == null || buddy.getIdentityType().trim().length() == 0 || (!buddy.getIdentityType().equalsIgnoreCase("email") && !buddy.getIdentityType().equalsIgnoreCase("mobile"))){
     		throw new HireBuddyException("Buddy_Identity_Type_Invalid");
     	}
@@ -112,7 +116,10 @@ public class BuddyServiceImpl extends HireBuddyServiceImpl<Long, Buddy> implemen
 				buddy.setPassportUrl(confUtilService.getDocumentsServerBaseUrl()+buddy.getFirstName()+"-"+buddy.getMobile()+"-PASSPORT."+buddy.getAadharExtension());
 			}
 			
-    		
+			if(buddy.getCv() != null && buddy.getCvExtension() != null && buddy.getCvExtension().trim().length() !=0){
+				FileUtils.writeByteArrayToFile(new File(confUtilService.getDocumentsLocation()+File.separator+""+buddy.getFirstName()+"-"+buddy.getMobile()+"-CV."+buddy.getCvExtension()), buddy.getCv());
+				buddy.setCvURL(confUtilService.getDocumentsServerBaseUrl()+buddy.getFirstName()+"-"+buddy.getMobile()+"-CV."+buddy.getCvExtension());
+			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			throw new HireBuddyException("CAN_NOT_CREATE_PAN_FILE", e);
@@ -152,8 +159,39 @@ public class BuddyServiceImpl extends HireBuddyServiceImpl<Long, Buddy> implemen
 		return buddies.get(0);
     }
     
-    public void verifyOTP(String buddyIdentity, String identityType) throws HireBuddyException{
+    public void verifyOTP(String buddyIdentity, String identityType, String otp) throws HireBuddyException{
+    	if(buddyIdentity == null || identityType == null || otp == null){
+    		throw new HireBuddyException("INCOMPLETE_DATA");
+    	}
     	
+    	if(identityType.equalsIgnoreCase("mobile")){
+    		Buddy buddy = getUniqueBuddyByMobile(buddyIdentity);
+    		if(buddy == null){
+    			throw new HireBuddyException("BUDDY_NOT_FOUND");
+    		}
+    		
+    		if(buddy.getOneTimePassword().equalsIgnoreCase(otp)){
+    			buddy.setValidated(true);
+    			dao.merge(buddy);
+    			//buddy.s
+    		}
+    	}
+    	
+    }
+    
+    public Boolean authenticate(String identity, String identityType, String password)throws HireBuddyException{
+    	if(identityType.equalsIgnoreCase("mobile")){
+    		Buddy buddy = getUniqueBuddyByMobile(identity);
+    		if(buddy == null){
+    			return false;
+    		}
+    		
+    		if(buddy.getPassword().equals(password) && buddy.getValidated() == true){
+    			return true;
+    		}
+    	}
+    	
+    	return false;
     }
  
 }

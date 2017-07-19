@@ -12,5 +12,7 @@ public interface BuddyService extends HireBuddyService{
 	 
 	 public Buddy getUniqueBuddyByMobile(String name) throws HireBuddyException;
 	 
-	 public void verifyOTP(String buddyIdentity, String identityType) throws HireBuddyException;
+	 public void verifyOTP(String buddyIdentity, String identityType, String otp) throws HireBuddyException;
+	 
+	 public Boolean authenticate(String identity, String identityType, String password)throws HireBuddyException;
 }
